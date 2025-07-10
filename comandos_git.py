@@ -18,3 +18,12 @@
 # ramas:
 # crear y movernos a rama nueva:
 # git checkout -b "funciones-nuevas"
+
+# movernos a rama existente:
+# git checkout "main"
+
+# ver ramas:
+# git branch
+
+# juntar ramas en main:
+# git merge "funciones-nuevas"
