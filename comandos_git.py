@@ -13,3 +13,8 @@
 # Se repiten siempre que haya cambios:
 # git add .  Agrega todos los archivos al repo
 # git commit -m "mensaje"  Crea un commit con los archivos agregados (etiqueta de info)
+
+
+# ramas:
+# crear y movernos a rama nueva:
+# git checkout -b "funciones-nuevas"
