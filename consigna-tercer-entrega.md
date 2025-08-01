@@ -11,12 +11,24 @@ Requisitos
 Link de GitHub con el proyecto totalmente subido a la plataforma.
 
 Proyecto Web Django con patrón MVT que incluya:
+
 Herencia de HTML.
 
-Por lo menos 3 clases en models.
+Por lo menos 3 clases en models.py.
 
 Un formulario para insertar datos a por cada model creado..
 
 Un formulario para buscar algo en la BD
 
 Readme que indique el orden en el que se prueban las cosas y/o donde están las funcionalidades.
+
+
+
+--------------------------------------------------------------------------------------------
+
+
+caso cuando un proyecto
+
+el requerimiento consumio menos de las horas asignadas. Puede pasar tambien que le asignen horas de mas. Posibilidad de editar el requerimiento.
+
+

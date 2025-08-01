@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.http import HttpResponse
-from .models import Familiar, Curso, Estudiante
-from .forms import CursoForm, EstudianteForm
+from .models import Familiar, Curso, Estudiante, Auto
+from .forms import CursoForm, EstudianteForm, AutoForm
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 # Create your views here.
 
@@ -78,3 +80,37 @@ def crear_estudiante(request):
 def listar_estudiantes(request):
     estudiantes = Estudiante.objects.all()
     return render(request, 'mi_primer_app/listar-estudiantes.html', {"estudiantes": estudiantes})
+
+
+# Vistas basadas en clases para Auto
+
+class AutoListView(ListView):
+    model = Auto
+    template_name = 'mi_primer_app/listar-autos.html'
+    context_object_name = 'autos'
+
+
+class AutoCreateView(CreateView):
+    model = Auto
+    form_class = AutoForm
+    template_name = 'mi_primer_app/crear-auto.html'
+    success_url = reverse_lazy('listar-autos')
+
+
+class AutoUpdateView(UpdateView):
+    model = Auto
+    form_class = AutoForm
+    template_name = 'mi_primer_app/crear-auto.html'
+    success_url = reverse_lazy('listar-autos')
+
+
+class AutoDetailView(DetailView):
+    model = Auto
+    template_name = 'mi_primer_app/detalle-auto.html'
+    context_object_name = 'auto'
+
+
+class AutoDeleteView(DeleteView):
+    model = Auto
+    template_name = 'mi_primer_app/eliminar-auto.html'
+    success_url = reverse_lazy('listar-autos')
