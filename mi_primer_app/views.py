@@ -4,8 +4,14 @@ from django.http import HttpResponse
 from .models import Familiar, Curso, Estudiante, Auto
 from .forms import CursoForm, EstudianteForm, AutoForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
+
+
+def about(request):
+    return render(request, 'mi_primer_app/about.html')
 
 
 def home(request):
@@ -29,6 +35,7 @@ def listar_familiares(request):
     return render(request, 'mi_primer_app/listar-familiares.html', {"familiares": familiares})
 
 
+@login_required
 def crear_curso(request):
     if request.method == 'POST':
         form = CursoForm(request.POST)
@@ -60,6 +67,7 @@ def buscar_cursos(request):
         return render(request, 'mi_primer_app/listar-cursos.html', {"cursos": cursos, "nombre": nombre})
 
 
+@login_required
 def crear_estudiante(request):
     if request.method == 'POST':
         form = EstudianteForm(request.POST)
@@ -90,27 +98,27 @@ class AutoListView(ListView):
     context_object_name = 'autos'
 
 
-class AutoCreateView(CreateView):
+class AutoCreateView(LoginRequiredMixin, CreateView):
     model = Auto
     form_class = AutoForm
     template_name = 'mi_primer_app/crear-auto.html'
     success_url = reverse_lazy('listar-autos')
 
 
-class AutoUpdateView(UpdateView):
+class AutoUpdateView(LoginRequiredMixin, UpdateView):
     model = Auto
     form_class = AutoForm
     template_name = 'mi_primer_app/crear-auto.html'
     success_url = reverse_lazy('listar-autos')
 
 
-class AutoDetailView(DetailView):
+class AutoDetailView(LoginRequiredMixin, DetailView):
     model = Auto
     template_name = 'mi_primer_app/detalle-auto.html'
     context_object_name = 'auto'
 
 
-class AutoDeleteView(DeleteView):
+class AutoDeleteView(LoginRequiredMixin, DeleteView):
     model = Auto
     template_name = 'mi_primer_app/eliminar-auto.html'
     success_url = reverse_lazy('listar-autos')

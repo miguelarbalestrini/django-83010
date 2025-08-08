@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+{% block content %}
+
+<h2>Perfil</h2>
+
+<p>Nombre de usuario: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Fecha de registro: {{ user.date_joined }}</p>
+
+<p>Primer nombre: {{user.first_name}}</p>
+<p>Primer nombre: {{user.last_name}}</p>
+
+{% if user.avatar %}
+
+    <img src="{{ user.avatar.image.url }}" alt="Avatar" style="width: 200px; height: 200px;">
+{% else %}
+    <p>No tienes un avatar configurado.</p>
+{% endif %}
+
+<a class="btn btn-primary" href="{% url 'profile-update' %}">Editar Perfil</a>
+
+{% endblock %}
